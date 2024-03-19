@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <meta charset="utf-8"/>
+            <title>Wehelp申請表QA(王仁宏)</title>
+            <link rel="stylesheet" type="text/css" href="application-r2.css" />
+        </head>
+        <body>
+            <div style="font-size:50px;text-align:center"><b>Wehelp申請表</b></div>
+            <div style="font-size:30px;text-align:center;color:blueviolet"><b>申請者:王仁宏</b></div>
+            <div class="frame"><!--讓項目水平排列-->
+                <div class="subtitle"><a href="https://pda.104.com.tw/profile/preview?vno=75whm2pf9"><image high="16px" width="16px" src="https://www.104.com.tw/favicon.ico"/>104履歷</a></div>
+                <div class="subtitle"><a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"><image  high="16px" width="16px" src="https://static.licdn.com/aero-v1/sc/h/5bukxbhy9xsil5mb7c2wulfbx"/>LinkedIn</a></div>
+            </div><br/>
+            <hr/>
+            <div class="questionstyle" onclick="changeToQ1();">1.兩百字內的個人簡介</div>
+             <div id="Q1" class="answerstyle" style="display:none">
+                【現況】<br/>
+                任職於美商Diodes半導體製程整合工程師5年經驗,主要工作內容為負責維持產品高良率產出與產品電性異常分析。<br/>
+                【經歷】<br/>
+                我樂於接受新興事物的學習與挑戰。從求學時期到工作階段嘗試過多種領域變換(材料研發→建造工廠→半導體整合)，在變換工作領域時遭遇到的困難與挫折經常會讓我有強烈的好奇心去專研與開發，因為我喜歡動手嘗試的樂趣與解決問題的成就感。</div></div>
+            <div class="questionstyle" onclick="changeToQ2();">2.為了成為軟體工程師，做過什麼努力？若有具體作品請分享給我們</div>
+                <div id="Q2" class="answerstyle" style="display:none">在下班後報名實體coding相關課程(產業人才投資計畫- 初階Python課程)、搜尋線上影音教學或網路平台上(hahow、Udmey)的課程進行初步對程式編碼的認識。經過上述嘗試後,發現自己不排斥程式編碼的工作,而能夠在編碼的過程中不斷的思考與摸索直到改進錯誤。<br/>
+                每次結束教程後的心得，『有感覺到自己好像學了什麼,但是卻好像沒辦法能拿出來應用或產出小專案內容』,有種見樹不見林的悵然若失感。在YT上看到Wehelp的頻道推播,前幾屆學員們能在短時間內從0到轉職成功且皆在不錯的工作領域上有所發展。因此想嘗試這段為期半年的程式訓練課程,希望自己也能藉由此套系統成功轉職。</div>
+            <div class="questionstyle" onclick="changeToQ3();">3.如果參與這個訓練，會怎麼安排學習時間？</div>
+                <div id="Q3" class="answerstyle" style="display:none">第一階段:在職參與訓練課程(參加每周一會議),確認課程內容是否適合自己並在往後的半年能持續學習。目前下班後與周末時(約40小時/周),持續在線上學習澎澎老師於YT上架與第一階段有關的課程內容。<br/>
+                第二階段、第三階段:如能順利挺過第一階段的磨練,預計於5月中旬與目前公司提出離職通告,全力投入第二、三階段的學習。</div>
+            <div class="questionstyle" onclick="changeToQ4();">4.是否有想要加入的公司？為什麼想加入該公司？</div>
+                <div id="Q4" class="answerstyle" style="display:none">對於特定公司沒有太多想法,但是在目前工作領域上經常需要使用大量的生產數據在工程上進行模擬解析與作為改善生產條件依據。大數據的分析經常會讓人有出乎意料之外的結果,有興趣朝向做數據分析的領域進行發展。</div>
+            <div class="questionstyle" onclick="changeToQ5();">5.請描述一件產生明顯負面情緒的經歷，如何處理該情緒？</div>
+                <div id="Q5" class="answerstyle" style="display:none">在遭遇到無法解決的問題時，通常會讓自己產生能力不足的情緒低落感，我會讓自己多接觸大自然進行戶外活動，做平常自己喜歡的消遣或者與人進行對談交流，讓自己暫時在負面情緒中抽離。</div>
+            <div class="questionstyle" onclick="changeToQ6();">6.關於這份申請網頁，分享一個開發時的技術心得。</div>
+                <div id="Q6" class="answerstyle" style="display:none">優良的CSS 選擇器編碼設定能讓人一目了然網頁結構與主要資料內容,不會讓人一開啟編碼頁面就想關上。</div>
+            <div class="questionstyle" onclick="changeToQ7();">7.請用簡短兩三句話，描述對你而言，最重要的一項人際交往原則。</div>
+                <div id="Q7" class="answerstyle" style="display:none">開開朗與誠實是我認為最容易讓人感受到你的真心誠意的最佳行為</div>
+            <div class="questionstyle" onclick="changeToQ8();">8.其他想要對我們說的事情？</div>
+                <div id="Q8" class="answerstyle" style="display:none">感謝YT讓我找到這項資源、感謝Wehelp團隊願意開發課程內容引領沒經驗的人進入編程世界。</div>
+            <script>
+                function changeToQ1(){
+                    let Q1=document.getElementById("Q1");
+                    if(Q1.style.display==="none"){
+                    Q1.style.display="block";
+                    }else{
+                    Q1.style.display="none";
+                }}
+
+                function changeToQ2(){
+                    let Q2=document.getElementById("Q2");
+                    if(Q2.style.display==="none"){
+                    Q2.style.display="block";
+                    }else{
+                    Q2.style.display="none";}
+                }
+                function changeToQ3(){
+                    let Q3=document.getElementById("Q3");
+                    if(Q3.style.display==="none"){
+                    Q3.style.display="block";
+                    }else{
+                    Q3.style.display="none";}
+                }
+                function changeToQ4(){
+                    let Q4=document.getElementById("Q4");
+                    if(Q4.style.display==="none"){
+                    Q4.style.display="block";
+                    }else{
+                    Q4.style.display="none";}
+                }
+                function changeToQ5(){
+                    let Q5=document.getElementById("Q5");
+                    if(Q5.style.display==="none"){
+                    Q5.style.display="block";
+                    }else{
+                    Q5.style.display="none";}
+                }
+                function changeToQ6(){
+                    let Q6=document.getElementById("Q6");
+                    if(Q6.style.display==="none"){
+                    Q6.style.display="block";
+                    }else{
+                    Q6.style.display="none";}
+                }
+                function changeToQ7(){
+                    let Q7=document.getElementById("Q7");
+                    if(Q7.style.display==="none"){
+                    Q7.style.display="block";
+                    }else{
+                    Q7.style.display="none";}
+                }
+                function changeToQ8(){
+                    let Q8=document.getElementById("Q8");
+                    if(Q8.style.display==="none"){
+                    Q8.style.display="block";
+                    }else{
+                    Q8.style.display="none";}
+                }
+            </script>
+        </body>
+    </html>
