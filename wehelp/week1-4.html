@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8" />
+        <title>(王仁宏-week1 work)HTML-CSS-RWD 切版實務</title>
+        <link rel="stylesheet" type="text/css" href="week1-4.css" />
+    </head>
+    <body>
+        <div class="grid1">
+            <div class="subtitle">MyWebsite</div>
+            <!--menu button-->
+            <div id="burgermenu" class="menu-btn">
+                <img onclick="pupup()"src="burger.png" width="20px" height="20px">
+            </div>
+            <!--sidebar-->
+            <div  id="crossmenu" class="side-bar">
+                <div class="close-btn">
+                    <img onclick="closepupup()" src="corss.png" width="20px" height="20px"></div>
+                <div class="sidebarmenu">
+                    <div class="sidebaritem"><a href=""></a>Item1</div>
+                    <div class="sidebaritem"><a href=""></a>Item2</div>
+                    <div class="sidebaritem"><a href=""></a>Item3</div>
+                    <div class="sidebaritem"><a href=""></a>Item4</div>
+                   <!-- <img onclick="pupup()"src="burger.png" width="20px" height="20px">-->
+                </div>
+            </div>
+            <div class="menu1">Item1</div>
+            <div class="menu2">Item2</div>
+            <div class="menu3">Item3</div>
+            <div class="menu4">Item4</div>
+            <div class="welcome">Welcome to MyHome</div>
+        </div>
+        <div class="grid2">
+            <div class="smallbox1"><img class=smallboxphoto src="contextphoto.png"/>Promotion1</div>
+            <div class="smallbox2"><img class=smallboxphoto src="contextphoto.png"/>Promotion2</div>
+            <div class="smallbox3"><img class=smallboxphoto src="contextphoto.png"/>Promotion3</div>
+            <div class="bigbox1"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title1</span></div>
+            <div class="bigbox2"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title2</span></div>
+            <div class="bigbox3"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title3</span></div>
+            <div class="bigbox4"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title4</span></div>
+            <div class="bigbox5"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title5</span></div>
+            <div class="bigbox6"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title6</span></div>
+            <div class="bigbox7"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title7</span></div>
+            <div class="bigbox8"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title8</span></div>
+            <div class="bigbox9"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title9</span></div>
+            <div class="bigbox10"><img class=bigboxphoto src="contextphoto.png"/><img class=bigboxphoto2 src="star.png"/><span class="contextTitle">Title10</span></div>
+        </div>
+        <script>
+            function pupup(){
+                let showMenu=document.querySelector("#crossmenu");
+                if(showMenu.style.display==="none"){
+                    showMenu.style.display="block";}
+                else{showMenu.style.display="none";}
+            }
+            function closepupup(){
+                let closeMenu=document.querySelector("#crossmenu");
+                if(closeMenu.style.display==="none"){
+                    closeMenu.style.display="block";}
+                else{closeMenu.style.display="none";}
+            }
+        </script>
+    </body>
+</html>
