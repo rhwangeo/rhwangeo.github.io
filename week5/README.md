@@ -34,3 +34,58 @@
     SET SQL_SAFE_UPDATES=0; #關閉安全設定(索引KEY部分)
     UPDATE member SET name = 'test2' WHERE username = 'test';
 ![task3-8](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/b59bacd2-d10c-4363-8210-9d12e31dbfca)
+
+# Task 4: SQL Aggregation Functions
+### Task4-1: SELECT how many rows from the member table.
+    SELECT COUNT(*) FROM member;
+![task4-1](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/1e76d373-9038-4fa6-85b2-841b2c61e682)
+### Task4-2: SELECT the sum of follower_count of all the rows from the member table.
+    SELECT SUM(follower_count) FROM member;
+![task4-2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/ce550569-359b-435c-bd77-0d530c824261)
+### Task4-3: SELECT the average of follower_count of all the rows from the member table.
+    SELECT AVG(follower_count) FROM member;
+![task4-3](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/f097d128-f6df-4259-8c86-7caebfc7792d)
+
+### Task4-4: SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table.
+    SELECT AVG(follower_count) AS average_count
+    FROM (
+    SELECT follower_count
+    FROM member
+    ORDER BY follower_count DESC
+    LIMIT 2) AS subquery;
+![task4-4](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/0a1a7832-087c-4bc5-833e-c17ce683cdfa)
+# Task 5: SQL JOIN
+### Task5-1: Create a new table named message, in the website database.
+    CREATE TABLE message(
+	id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    member_id BIGINT NOT NULL,
+    content VARCHAR(255) NOT NULL,
+    like_count INT UNSIGNED NOT NULL DEFAULT 0,
+    time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    INSERT INTO message(member_id, content,like_count) VALUES ('2', 'hello,大家好',8);
+    INSERT INTO message(member_id, content,like_count) VALUES ('2', '我是成員二號',1);
+    INSERT INTO message(member_id, content) VALUES ('3', '我是成員三號,我愛吃西瓜');
+    INSERT INTO message(member_id, content,like_count) VALUES ('1', '我是成員一號,我住南投',4);
+    INSERT INTO message(member_id, content,like_count) VALUES ('1', '我正在參加媽祖遶境活動',2);
+    INSERT INTO message(member_id, content,like_count) VALUES ('2', '地震好可怕',3);
+    SELECT * from message;
+![task5-1](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/157d3791-e66f-4969-9505-371fef9c23d7)
+### Task5-2: SELECT all messages, including sender names. We have to JOIN the member table to get that.
+    SELECT * from member INNER JOIN  message ON member.id=message.member_Id ;
+![task5-2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/4a3f86e5-4a7e-4bd8-99c3-3f1bb9224c34)
+### Task5-3: SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that.
+    SELECT * from member INNER JOIN  message ON member.id=message.member_Id where member.username='test' ;
+![task5-3](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/7e49a48d-5d7a-4f6a-9260-acafb0008b6c)
+### Task5-4: Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test.
+    SELECT AVG(message.like_count) AS average_like_count
+    FROM member
+    JOIN message ON member.id = message.member_id
+    WHERE member.username = 'test';
+![task5-4](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/56c00ff9-a6e3-482c-9429-87c4943ac463)
+### Task5-5: Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages GROUP BY sender username.
+    SELECT member.username, AVG(message.like_count) AS average_like_count
+    FROM member
+    JOIN message ON member.id = message.member_id
+    GROUP BY member.username;
+![task5-5](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/9493be1e-4582-4713-aaac-d39ef58dc936)
