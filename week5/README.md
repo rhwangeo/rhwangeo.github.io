@@ -14,12 +14,23 @@
     INSERT INTO member(name, username, password,follower_count) VALUES ('Bill', 'bbb', '456',4);
     INSERT INTO member(name, username, password,follower_count) VALUES ('Charle', 'ccc', '789',2);
     SELECT * from member;
-![task3-1_2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/40af82d9-49a3-4daf-9057-849c66757273)
+![task3-1_2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/830a488b-6228-40f0-810b-be6905a803d5)
 ### Task3-3: SELECT all rows from the member table, in descending order of time.
-
+    SELECT * FROM member ORDER BY time DESC;
+![task3-3](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/992a29f3-3ad0-43a5-835a-6ed39c38a610)
 ### Task3-4: SELECT total 3 rows, second to fourth, from the member table, in descending order of time. Note: it does not mean SELECT rows where id are 2, 3, or 4.
-
+    SELECT * FROM member ORDER BY time DESC LIMIT 4 OFFSET 1;
+![task3-4](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/0177d600-effc-45ce-bc1a-e30d7b8a982a)
 ### Task3-5: SELECT rows where username equals to test.
+    SELECT * FROM member WHERE username = 'test';
+![task3-5](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/71806f32-b2eb-4615-9a55-55c4e346cb3f)
 ### Task3-6: SELECT rows where name includes the es keyword.
+    SELECT * FROM member WHERE name LIKE '%es%';
+![task3-6](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/db778a33-3b04-48c8-a321-52edadaade88)
 ### Task3-7: SELECT rows where both username and password equal to test.
+    SELECT * FROM member WHERE username = 'test' AND password = 'test';
+![task3-7](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/b61d4040-0fe7-4610-88a5-31e9e64122ee)
 ### Task3-8: UPDATE data in name column to test2 where username equals to test.
+    SET SQL_SAFE_UPDATES=0; #關閉安全設定(索引KEY部分)
+    UPDATE member SET name = 'test2' WHERE username = 'test';
+![task3-8](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/b59bacd2-d10c-4363-8210-9d12e31dbfca)
