@@ -74,18 +74,18 @@
 	SELECT * from member INNER JOIN  message ON message.member_id = member.id ;
 ![task5-2-r2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/59901a11-845c-4f1a-8c31-6b2031fe8d4e)
 ### Task5-3: SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that.
-	SELECT * from member INNER JOIN  message ON member.id=message.member_Id where member.username='test' ;
+	SELECT * from member INNER JOIN  message ON message.member_Id = member.id where member.username='test' ;
 ![task5-3-r2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/a5633e09-36ed-4a6c-b94b-d990cd932e53)
 ### Task5-4: Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test.
 	SELECT AVG(message.like_count) AS average_like_count
 	FROM member
-	JOIN message ON member.id = message.member_id
+	JOIN message ON message.member_Id = member.id
 	WHERE member.username = 'test';
 ![task5-4-r2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/c05daaa8-89a0-4e45-9af5-6172889bfb4a)
 ### Task5-5: Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages GROUP BY sender username.
 	SELECT member.username, AVG(message.like_count) AS average_like_count
 	FROM member
-	JOIN message ON member.id = message.member_id
+	JOIN message ON message.member_Id = member.id
 	GROUP BY member.username;
  ![task5-5-r2](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/75938aa4-5a7b-413d-a545-a99ba8c38d61)
 
