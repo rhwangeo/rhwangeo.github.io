@@ -62,7 +62,7 @@
     	content VARCHAR(255) NOT NULL,
    	like_count INT UNSIGNED NOT NULL DEFAULT 0,
     	time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    	####FOREIGN KEY(member_id) REFERENCES member(id));
+    	FOREIGN KEY(member_id) REFERENCES member(id));
 
 	INSERT INTO message(member_id, content,like_count) VALUES (1, 'hello,大家好我是test',6);
 	INSERT INTO message(member_id, content,like_count) VALUES (2, '我是成員二號',1);
