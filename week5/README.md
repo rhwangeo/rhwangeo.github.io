@@ -58,15 +58,16 @@
 ### Task5-1: Create a new table named message, in the website database.
 	CREATE TABLE message(
 	id BIGINT PRIMARY KEY AUTO_INCREMENT,
-   	member_id BIGINT NOT NULL,
-   	content VARCHAR(255) NOT NULL,
-    	like_count INT UNSIGNED NOT NULL DEFAULT 0,
-    	time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
+    	member_id BIGINT NOT NULL,
+    	content VARCHAR(255) NOT NULL,
+   	like_count INT UNSIGNED NOT NULL DEFAULT 0,
+    	time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    	####FOREIGN KEY(member_id) REFERENCES member(id));
 
-	INSERT INTO message(member_id, content,like_count) VALUES ('1', 'hello,大家好我是test',6);
-	INSERT INTO message(member_id, content,like_count) VALUES ('2', '我是成員二號',1);
-	INSERT INTO message(member_id, content,like_count) VALUES ('3', '我是成員三號,我愛吃西瓜',3);
-	INSERT INTO message(member_id, content,like_count) VALUES ('4', '我是成員四號,我住南投',2);
+	INSERT INTO message(member_id, content,like_count) VALUES (1, 'hello,大家好我是test',6);
+	INSERT INTO message(member_id, content,like_count) VALUES (2, '我是成員二號',1);
+	INSERT INTO message(member_id, content,like_count) VALUES (3, '我是成員三號,我愛吃西瓜',3);
+	INSERT INTO message(member_id, content,like_count) VALUES (4, '我是成員四號,我住南投',2);
 	SELECT * from message;
  ![task5-1-r1](https://github.com/rhwangeo/rhwangeo.github.io/assets/161855974/70cffe4e-699c-4048-a63a-7f328367c30b)
 
