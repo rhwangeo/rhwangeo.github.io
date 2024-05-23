@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week7-會員註冊系統</title>
+    <link href="{{ url_for('static', path='/index.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1 class="hollo_word">歡迎光臨，請註冊登入系統</h1>
+    <div class="small_title">註冊帳號</div>
+    <form class="input_data" method="post" action="/signup">
+        <div class="item">姓名<input type="text" name="name"/></div>
+        <div class="item">帳號<input type="text" name="username"/></div>
+        <div class="item">密碼<input type="password" name="password"></div>
+        <button class="btn" type="submit">註冊</button>
+    </form> <!--漏打/form 會出現,會被視為form表單沒正確關閉,導致出現404 Error頁面-->
+    <hr/>
+    <div class="small_title">登入系統</div>
+    <form class="input_data" method="post" action="/signin">
+        <div class="item">帳號<input type="text" name="username"/></div>
+        <div class="item">密碼<input type="password" name="password"/></div>
+        <button class="btn" type="submit" onclick="return login()">登入</button>
+    </form>
+</body>
+</html>
