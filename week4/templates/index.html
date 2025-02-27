@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week4-會員登錄系統</title>
+    <link href="{{ url_for('static', path='/index.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1 class="hollo_word">歡迎光臨，請輸入帳號密碼</h1>
+    <div class="small_title">登入系統</div>
+    <form class="input_data" stylle="margin:10px" method="post" action="/signin">
+        帳號<input type="text" name="username"/><br/>
+        密碼<input type="password" name="password"/><br/>
+        同意條款<input type="checkbox" id="agreeCheck"><br/>
+        <button class="btn" type="submit" onclick="return login()">登入</button>
+    </form>
+    <script>
+         function login() {
+            // 獲取同意條款的勾選狀態
+            var agreeChecked = document.getElementById("agreeCheck").checked;
+            // 如果同意條款未勾選
+            if (!agreeChecked) {
+                // 顯示警告視窗
+                alert("Please check the checkbox first");
+                // 阻止表單提交
+                return false;
+            }
+            // 允許表單提交
+            return true;
+            }
+    </script>
+</body>
+</html>

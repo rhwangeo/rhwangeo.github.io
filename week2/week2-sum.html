@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8" />
+        <title>week2 Task</title>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            console.log("--task1--")
+            function findAndPrint(messages, currentStation) {
+                // 建立捷運站名稱與編號的對應清單
+                const stationList = {
+                    "Songshan": 1,
+                    "NanjingSanmin": 2,
+                    "Taipei Arena": 3,
+                    "NanjingFuxing": 4,
+                    "Zhongshan": 5,
+                    "Beimen": 6,
+                    "Ximen": 7,
+                    "Xiaonamen": 8,
+                    "ChiangKai-ShekMemorialHall": 9,
+                    "Guting": 10,
+                    "TaipowerBuilding": 11,
+                    "Gongguan": 12,
+                    "Wanlong": 13,
+                    "Jingmei": 14,
+                    "Dapiinglin": 15,
+                    "Qizhang": 16,
+                    "Xiaobitan": 16.5,
+                    "Xindian City Hall": 17,
+                    "Xindian": 18,
+                };
+
+                // 將目前站點的名稱轉換為編號
+                const currentStationNum = stationList[currentStation];
+                
+                // 建立一個物件來存儲人員與距離的對應關係
+                const peopleDistance = {};
+                for (const member in messages) {
+                    const message = messages[member];
+                    for (const station in stationList) {
+                        if (message.includes(station)) {
+                            const stationNum = stationList[station];
+                            let distance = Math.abs(stationNum - currentStationNum);
+                            if (currentStation === "Xiaobitan" || message.includes("Xiaobitan")) {
+                                distance += 1;
+                            }
+                            peopleDistance[member] = distance;
+                        }}}
+
+                // 找到距離最接近的人
+                let closestPerson = Object.keys(peopleDistance)[0];
+                let minDistance = peopleDistance[closestPerson];
+                for (const member in peopleDistance) {
+                    if (peopleDistance[member] < minDistance) {
+                        closestPerson = member;
+                        minDistance = peopleDistance[member];
+                    }}
+
+                // 確認結果
+                console.log(closestPerson);
+            }
+
+            const messages = {
+                "Leslie": "I'm at home near Xiaobitan station.",
+                "Bob": "I'm at Ximen MRT station.",
+                "Mary": "I have a drink near Jingmei MRT station.",
+                "Copper": "I just saw a concert at Taipei Arena.",
+                "Vivian": "I'm at Xindian station waiting for you."
+            };
+
+            findAndPrint(messages, "Wanlong"); // print Mary
+            findAndPrint(messages, "Songshan"); // print Copper
+            findAndPrint(messages, "Qizhang"); // print Leslie
+            findAndPrint(messages, "Ximen"); // print Bob
+            findAndPrint(messages, "Xindian City Hall"); // print Vivian
+
+            console.log("--task2--")
+            function book(consultants, hour, duration, criteria) {
+                // 使用新字典加入新key,value
+                consultants.forEach(consultant => {
+                    if (!consultant.hasOwnProperty("schedule")) {
+                        consultant["schedule"] = [];
+                    }
+                });
+
+                const start_time = hour;
+                const end_time = hour + duration;
+
+                // 找出有空的顧問
+                const available_consultants = consultants.filter(consultant => {
+                    let overlap = false;
+                    consultant.schedule.forEach(([start, end]) => {
+                        if (start < end_time && start_time < end) {  // 時間重疊條件
+                            overlap = true;
+                        }
+                    });
+                    return !overlap;
+                });
+
+                if (available_consultants.length === 0) {
+                    console.log("No Service");
+                    return;
+                }
+
+                let chosen_consultant = null;
+                if (criteria === "price") {
+                    // 確認最低價
+                    let lowest_price = null;
+                    available_consultants.forEach(consultant => {
+                        if (lowest_price === null || consultant.price < lowest_price) {
+                            lowest_price = consultant.price;
+                            chosen_consultant = consultant;
+                        }
+                    });
+                } else if (criteria === "rate") {
+                    // 確認評分高
+                    let highest_rate = null;
+                    available_consultants.forEach(consultant => {
+                        if (highest_rate === null || consultant.rate > highest_rate) {
+                            highest_rate = consultant.rate;
+                            chosen_consultant = consultant;
+                        }
+                    });
+                }
+
+                // 更新顧問時間
+                chosen_consultant.schedule.push([start_time, end_time]);
+                console.log(chosen_consultant.name);
+            }
+
+            const consultants = [
+                { name: "John", rate: 4.5, price: 1000 },
+                { name: "Bob", rate: 3, price: 1200 },
+                { name: "Jenny", rate: 3.8, price: 800 }
+            ];
+
+            book(consultants, 15, 1, "price");  // Jenny
+            book(consultants, 11, 2, "price");  // Jenny
+            book(consultants, 10, 2, "price");  // John
+            book(consultants, 20, 2, "rate");   // John
+            book(consultants, 11, 1, "rate");   // Bob 
+            book(consultants, 11, 2, "rate");   // No Service
+            book(consultants, 14, 3, "price");  // John
+            
+            console.log("--task3--")
+            function func(...data) {
+                let middleNameCount = {};
+                let namesWithMiddleName = {};  
+
+                for (let name of data) {
+                    let middleName;
+                    // 確認中間名
+                    if (name.length === 5 || name.length === 4) {
+                        middleName = name[2];
+                    } else if (name.length === 3 || name.length === 2) {
+                        middleName = name[1];
+                    } else {
+                        middleName = "僅辨識名字長度2-5個字"; 
+                    }
+                    // 更新中間名出現次數
+                    if (middleName) {
+                        if (middleName in middleNameCount) {
+                            middleNameCount[middleName] += 1;
+                            namesWithMiddleName[middleName].push(name);
+                        } else {
+                            middleNameCount[middleName] = 1;
+                            namesWithMiddleName[middleName] = [name];
+                        }
+                    }
+                }
+                // 印出只出現一次的名字
+                let oneTimeCount = 0;
+                for (let middleName in middleNameCount) {
+                    if (middleNameCount[middleName] === 1) {
+                        oneTimeCount += 1;
+                        console.log(namesWithMiddleName[middleName]);
+                    }
+                }
+                if (oneTimeCount === 0) {
+                    console.log("沒有");
+                }
+            }
+            func("彭大牆","陳王明雅","吳明"); //彭大牆
+            func("郭靜雅", "王立強", "郭林靜宜", "郭立恆", "林花花"); //林花花
+            func("郭宣雅", "林靜宜", "郭宣恆", "林靜花"); //沒有
+            func("郭宣雅", "夏曼藍波安", "郭宣恆"); //夏曼藍波安
+
+            console.log("--task4--")
+            function getNumber(index) {
+            console.log(4 * index - 5 * Math.floor(index / 3));}
+            getNumber(1);
+            getNumber(5);
+            getNumber(10);
+            getNumber(30);
+        </script>
+    </body>
+</html>

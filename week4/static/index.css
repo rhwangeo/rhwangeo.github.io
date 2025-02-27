@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .hollo_word{
+    background:#003060;
+    color:white;
+    height:50px;
+    font-size:30px;
+    text-align:center;
+    align-self:center;
+    justify-content: center;
+    align-content: center; 
+  }
+  .small_title{
+    margin:15px;
+    font-size:20px;
+    text-align:center;
+    align-self:center;
+  }
+
+.input_data{
+    margin:20px;
+    text-align:center;
+    align-self:center;
+  }
